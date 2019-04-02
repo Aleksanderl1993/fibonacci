@@ -1,14 +1,16 @@
-<div class="container">
+<div class="container mb-5">
   <div class="jumbotron">
     <h1 class="display-4">Ciąg Fibonacciego</h1>
     <p class="lead">Ta aplikacja generuje kolejne elementy ciągu Fibonacciego</p>
     <hr class="my-4">
-    <a class="btn btn-primary btn-lg" href="#" role="button" (click)="runFibonacci()">{{isRunFibonacciSequence ? 'Stop' : 'Start'}}</a>
+    <a class="btn btn-primary btn-lg mb-3" href="#" role="button"
+       (click)="runFibonacci()">{{isRunFibonacciSequence ? 'Stop' : 'Start'}}</a>
+    <p>CSS Transition i Transform działają po najechaniu na element listy.</p>
   </div>
 
   <ul class="list-group list-group-flush">
-    <li class="list-group-item active">Pierwszy element:</li>
-    <li class="list-group-item" *ngFor="let fibi of fibonacci">{{fibi}}</li>
+    <li class="list-group-item active" *ngIf="fibonacci.length !== 0">Elementy ciągu Fibonacciego:</li>
+    <li class="list-group-item" *ngFor="let fib of fibonacci"
+        [ngClass]="isOddValue(fib) ? 'list-group-item-success font-effect' : 'list-group-item-danger scale-effect'">{{fib}}</li>
   </ul>
-
 </div>

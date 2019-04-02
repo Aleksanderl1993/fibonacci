@@ -1,0 +1,18 @@
+.font-effect {
+  transition: 3s;
+
+  &:hover {
+    font-size: 2em;
+    color: orange;
+    transition: font-size 3s, color 3s;
+  }
+}
+
+.scale-effect {
+  transition: 3s;
+
+  &:hover {
+    transition: 3s;
+    transform: scale(.9);
+  }
+}

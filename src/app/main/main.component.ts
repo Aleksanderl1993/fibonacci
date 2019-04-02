@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Subscription} from "rxjs";
-import {Observable} from "rxjs/observable";
+import {Subscription} from 'rxjs/Subscription';
+import {Observable} from 'rxjs/observable';
 import 'rxjs/add/observable/interval';
 
 @Component({
@@ -10,7 +10,7 @@ import 'rxjs/add/observable/interval';
 })
 export class MainComponent implements OnInit {
 
-  fibonacci = [];
+  fibonacci: any[] = [];
   isRunFibonacciSequence: boolean = false;
   interval$: Subscription;
 
@@ -23,16 +23,16 @@ export class MainComponent implements OnInit {
 
   runFibonacci() {
     this.isRunFibonacciSequence = !this.isRunFibonacciSequence;
-    if(this.isRunFibonacciSequence) {
-      this.interval$ = Observable.interval(1000 * 3).subscribe(() => this.runFibonacciaa());
+    if (this.isRunFibonacciSequence) {
+      this.interval$ = Observable.interval(1000 * 3).subscribe(() => this.fibonacciSequence());
     } else {
       this.interval$.unsubscribe();
     }
 
   }
 
-  runFibonacciaa() {
-    let index = this.fibonacci.length;
+  fibonacciSequence() {
+    const index = this.fibonacci.length;
     if (index === 0) {
       this.fibonacci.push(0)
     } else if (index === 1) {
@@ -40,5 +40,9 @@ export class MainComponent implements OnInit {
     } else {
       this.fibonacci[index] = this.fibonacci[index - 2] + this.fibonacci[index - 1];
     }
+  }
+
+  isOddValue(value) {
+    return value % 2 === 0;
   }
 }
